@@ -55,7 +55,6 @@ public class Playground {
 		
 		System.out.println("x: " + x); // String-Verkettung zur Laufzeit
 		System.out.println("y: " + y); // String-Verkettung zur Kompilezeit
-
 	}
 	
 	private static void machWas(Wochentag tag) {
