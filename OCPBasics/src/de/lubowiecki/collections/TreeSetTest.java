@@ -2,14 +2,20 @@ package de.lubowiecki.collections;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.Set;
 import java.util.TreeSet;
+
+import com.sun.source.tree.Tree;
 
 public class TreeSetTest {
 	
 	public static void main(String[] args) {
 		
-		TreeSet<Integer> ints = new TreeSet<>();
-		ints.add(25);
+		// Tree... ist immer sortiert d.h. objekte, die eigefügt werden müssen Comparable sein
+		// oder bei dem Ezeugen der Datenstruktur muss ein Comparator vorgegeben werden
+		
+		Set<Integer> ints = new TreeSet<>();
+		ints.add(25); // würde zur Laufzeit eine Exception werfen, wenn es nicht Comparable wäre
 		ints.add(3);
 		ints.add(17);
 		ints.add(1892);

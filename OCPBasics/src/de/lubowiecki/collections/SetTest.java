@@ -55,7 +55,8 @@ public class SetTest {
 
 }
 
-class Car {
+// Car ist NICHT sortierbar
+class Car { // ist nicht Comparable, d.h. implementiert das Interface Comparable nicht
 	
 	private String registration;
 	
