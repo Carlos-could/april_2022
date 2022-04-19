@@ -23,6 +23,7 @@ public class ExceptionVererbungTest {
 		} 
 		catch (SpritNichtDaException e) {
 			System.out.println("Du musst tanken...");
+			System.out.println(e.getMessage());
 		}
 		catch (AutoIstNichtGestartetException e) {
 			System.out.println("Das Auto ist noch aus!");
@@ -72,7 +73,11 @@ class SUV extends Auto {
 	
 }
 
-class SpritNichtDaException extends Exception {	
+class SpritNichtDaException extends Exception {
+	
+	public SpritNichtDaException() {
+		super("Sprit ist gerade alle...");
+	}
 }
 
 class AutoIstNichtGestartetException extends Exception {
