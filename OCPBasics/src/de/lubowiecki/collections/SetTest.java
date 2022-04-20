@@ -15,6 +15,9 @@ public class SetTest {
 		System.out.println(zahlen.add(3));
 		zahlen.add(9);
 		zahlen.add(22);
+		zahlen.add(null);
+		
+		//System.exit(0);
 		
 		System.out.println(zahlen);
 		
