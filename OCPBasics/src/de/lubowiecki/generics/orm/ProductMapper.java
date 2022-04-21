@@ -28,10 +28,6 @@ public class ProductMapper extends AbstractMapper<Product> {
 		return null;
 	}
 
-	@Override
-	public Product findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

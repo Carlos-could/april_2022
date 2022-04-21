@@ -14,7 +14,7 @@ import java.util.List;
 // 3. TableDataGateway
 
 
-public abstract class AbstractMapper<T> { // DataMapper-Pattern
+public abstract class AbstractMapper<T extends AbstractEntity> { // DataMapper-Pattern
 	
 	// CRUD: Create, Read, Update, Delete
 	
@@ -26,6 +26,10 @@ public abstract class AbstractMapper<T> { // DataMapper-Pattern
 	
 	public abstract List<T> findAll();
 	
-	public abstract T findById(int id);
+	public T findById(int id) {
+		//String sql = "SELECT * FROM " + TABLE + " WHERE id = " + id;
+		// TODO: Methode implementieren
+		return null;
+	}
 
 }

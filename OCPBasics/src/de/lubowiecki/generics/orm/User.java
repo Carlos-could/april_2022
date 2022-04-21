@@ -2,23 +2,13 @@ package de.lubowiecki.generics.orm;
 
 // VO - ValueObject
 // DTO - Data Transfer Object
-public class User {
-	
-	private int id;
+public class User extends AbstractEntity {
 	
 	private String firstName;
 	
 	private String lastName;
 	
 	public User() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
