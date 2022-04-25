@@ -1,5 +1,6 @@
 package de.lubowiecki.jdbc.orm;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class UserManagementApp {
@@ -20,13 +21,23 @@ public class UserManagementApp {
 			//mapper.delete(4);
 			
 			// insert
-			Scanner scanner = new Scanner(System.in);
-			User u = new User();
-			System.out.print("Vorname: ");
-			u.setFirstname(scanner.nextLine());
-			System.out.print("Nachname: ");
-			u.setLastname(scanner.nextLine());
-			mapper.insert(u);
+//			Scanner scanner = new Scanner(System.in);
+//			User u = new User();
+//			System.out.print("Vorname: ");
+//			u.setFirstname(scanner.nextLine());
+//			System.out.print("Nachname: ");
+//			u.setLastname(scanner.nextLine());
+//			mapper.insert(u);
+//			
+			// update
+//			System.out.print("Vorname (Änderung): ");
+//			u.setFirstname(scanner.nextLine());
+//			mapper.update(u);
+			
+			Optional<User> ou = mapper.findById(5);
+			// Ausgabe erfolgt nur, wenn Optional nicht empty ist
+			ou.ifPresent(u -> System.out.println(u.getFirstname() + " " + u.getLastname()));
+			
 			
 		}
 		catch(Exception e) {

@@ -2,6 +2,7 @@ package de.lubowiecki.jdbc.orm;
 
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Optional;
 
 public interface Mapper<T> {
 
@@ -16,7 +17,7 @@ public interface Mapper<T> {
 	
 	List<T> findAll() throws Exception;
 	
-	T findById(int id) throws Exception;
+	Optional<T> findById(int id) throws Exception;
 	
 	T create(ResultSet rs) throws Exception;
 	

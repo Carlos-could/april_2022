@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractMapper<T extends AbstractEntity> implements Mapper<T> {	
 
@@ -30,15 +31,16 @@ public abstract class AbstractMapper<T extends AbstractEntity> implements Mapper
 	}
 	
 	@Override
-	public T findById(int id) throws Exception {
+	public Optional<T> findById(int id) throws Exception {
 		try(Connection dbh = DbUtils.getConnection(); Statement stmt = dbh.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM " + TABLE + " WHERE id = " +id);
+			stmt.execute("SELECT * FROM " + TABLE + " WHERE id = " +id);
+			ResultSet rs = stmt.getResultSet();
 			
 			if(rs.next()) {
-				return create(rs);
+				return Optional.of(create(rs));
 			}
 			
-			return null;
+			return Optional.empty();
 		}
 	}
 	
@@ -50,7 +52,9 @@ public abstract class AbstractMapper<T extends AbstractEntity> implements Mapper
 	@Override
 	public void delete(int id) throws Exception {
 		try(Connection dbh = DbUtils.getConnection(); Statement stmt = dbh.createStatement()) {
-			stmt.executeUpdate("DELETE FROM " + TABLE + " WHERE id = " + id);
+			//stmt.executeUpdate("DELETE FROM " + TABLE + " WHERE id = " + id);
+			stmt.execute("DELETE FROM " + TABLE + " WHERE id = " + id);
+			//return stmt.getUpdateCount() > 0;
 		}
 	}
 }
