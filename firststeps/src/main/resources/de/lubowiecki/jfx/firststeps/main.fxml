@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.lubowiecki.jfx.firststeps.MainController">
+   <children>
+      <Label fx:id="title" layoutX="12.0" layoutY="13.0" text="Produktverwaltung" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="Arial" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="75.0" text="Name:" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="name" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="235.0" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="125.0" text="Beschreibung:" AnchorPane.leftAnchor="20.0" />
+      <TextArea fx:id="description" layoutX="20.0" layoutY="142.0" prefHeight="99.0" prefWidth="235.0" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="20.0" layoutY="247.0" text="Anzahl:" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="amount" layoutX="20.0" layoutY="264.0" prefHeight="25.0" prefWidth="235.0" AnchorPane.leftAnchor="20.0" />
+      <Button layoutX="180.0" layoutY="303.0" mnemonicParsing="false" onAction="#sagHallo" text="Speichern" />
+      <TextArea fx:id="output" layoutX="283.0" layoutY="92.0" prefHeight="238.0" prefWidth="300.0" AnchorPane.rightAnchor="20.0" />
+   </children>
+</AnchorPane>
