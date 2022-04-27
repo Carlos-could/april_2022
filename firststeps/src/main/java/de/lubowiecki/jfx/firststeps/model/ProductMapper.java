@@ -47,7 +47,15 @@ public class ProductMapper extends AbstractMapper<Product> {
 
 	@Override
 	public void update(Product t) throws Exception {
-		throw new UnsupportedOperationException("ist noch nicht implementiert...");
+		String sql = "UPDATE " + TABLE + " SET name = ?, description = ?, amount = ? WHERE id = ?";
+		
+		try(Connection dbh = DbUtils.getConnection(); PreparedStatement stmt = dbh.prepareStatement(sql)) {
+			stmt.setString(1, t.getName());
+			stmt.setString(2, t.getDescription());
+			stmt.setInt(3, t.getAmount());
+			stmt.setInt(4, t.getId());
+			stmt.execute();
+		}
 	}
 
 	@Override
