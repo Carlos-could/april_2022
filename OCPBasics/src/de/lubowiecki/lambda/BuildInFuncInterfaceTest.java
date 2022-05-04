@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
@@ -11,6 +12,7 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 import java.util.List;
 
@@ -60,7 +62,7 @@ public class BuildInFuncInterfaceTest {
 		System.out.println("---- FUNCTION ----");
 		
 		Function<Integer, Double> f1 = i -> i.doubleValue();
-		Double d = f1.apply(123); // Wandelt Integer in Double
+		Double d1 = f1.apply(123); // Wandelt Integer in Double
 		
 		final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy");
 		
@@ -78,11 +80,25 @@ public class BuildInFuncInterfaceTest {
 		
 		System.out.println();
 		dZahlen = Arrays.asList(1.0,3.0,7.0,9.0,22.0,15.0,8.0,5.0);
+		
+		Function<Integer, Integer> fn1 = i -> i * 10;
+		UnaryOperator<Integer> uo1 = i -> i * 10;
+		
+		Function<Integer, Double> fn2 = i -> i.doubleValue() * 10;
+		BiFunction<Double, Integer, Double> fn3 = (d, i) -> d * i * 10;
+		
+		BinaryOperator<Double> bo1 = (dl1, dl2) -> dl1 * dl2;
+		BiFunction<Double, Double, Double> fn4 = (dl1, dl2) -> dl1 * dl2;
+		
 		dZahlen.stream()
-			.map(db -> db.intValue()) // Wechsel von Double auf Integer
-			.map(i -> i * 10) // Funktion mulipliziert Integer mit 10
+			.map(db -> db.intValue()) // Wechsel von Double auf Integer, Function<Double, Integer>
+			.map(i -> i * 10) // Funktion mulipliziert Integer mit 10, Function<Integer, Integer> oder UnaryOperator<Integer>
+//			.map(fn1) // mit Function
+//			.map(uo1) // mit UnaryOperator
 			.sorted()
-			.forEach(i -> System.out.print(i + ", "));
+			.forEach(i -> System.out.print(i + ", ")); // Consumer<Integer>
+		
+		
 		
 		System.out.println();
 		System.out.println("---- BI_FUNCTION ----");
@@ -107,7 +123,7 @@ public class BuildInFuncInterfaceTest {
 		System.out.println();
 		
 		// Zufallszahlen als Stream
-		//Stream.generate(diceW6).limit(10_000_000).forEach(System.out::println);
+		//Stream.generate(diceW6).forEach(System.out::println);
 		
 		
 		System.out.println("---- PREDICATE ----");
@@ -123,9 +139,9 @@ public class BuildInFuncInterfaceTest {
 		
 		// and verbindet zwei predicates
 		iZahlen.stream() // Stream von Integer
-			.mapToInt(iuo) // Stream von int
-			.filter(p1.and(p3)) // zahl muss > 10 and < 50 sein
+			.mapToInt(iuo) // Stream von int, ToIntFunction<Integer>
+			.filter(p1.and(p3)) // zahl muss > 10 and < 50 sein, IntPredicate
 			//.forEach(z -> System.out.println(z)); // Ausgabe
-			.forEach(System.out::println); // Ausgabe: Methoden-Referenz
+			.forEach(System.out::println); // Ausgabe: Methoden-Referenz, IntConsumer
 	}
 }
